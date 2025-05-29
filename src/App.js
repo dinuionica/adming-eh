@@ -108,8 +108,7 @@ const AddEventForm = () => {
               </option>
               {EVENT_TYPES.map((type) => (
                 <option key={type} value={type} className="text-gray-900">
-                  {type.charAt(0).toUpperCase() +
-                    type.slice(1).replace("-", " ")}
+                  {type}
                 </option>
               ))}
             </select>
