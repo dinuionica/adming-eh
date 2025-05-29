@@ -1,0 +1,8 @@
+[build]
+  publish = "build"    # sau "dist", în funcție de unde îți sunt fișierele statice 
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
