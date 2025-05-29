@@ -37,6 +37,22 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 const db = getFirestore();
 
+// Event types constant
+const EVENT_TYPES = [
+  "heart",
+  "medkit",
+  "ambulance",
+  "happy",
+  "water",
+  "vaccine",
+  "vaccine-needle",
+  "eye",
+  "mental",
+  "nutrition",
+  "exercise",
+  "vaccine-shield",
+];
+
 // Admin: Form to add new events
 function AddEventForm() {
   const [formData, setFormData] = useState({
