@@ -100,27 +100,14 @@ function AddEventForm() {
             value={formData.type}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#199A8E] bg-white text-[#199A8E]"
+            className="w-full px-4 py-2 appearance-none bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#199A8E] text-gray-700"
           >
             <option value="" disabled hidden>
               Select Event Type
             </option>
-            {[
-              "heart",
-              "medkit",
-              "ambulance",
-              "happy",
-              "water",
-              "vaccine",
-              "vaccine-needle",
-              "eye",
-              "mental",
-              "nutrition",
-              "exercise",
-              "vaccine-shield",
-            ].map((t) => (
-              <option key={t} value={t}>
-                {t}
+            {EVENT_TYPES.map((type) => (
+              <option key={type} value={type} className="text-gray-900">
+                {type}
               </option>
             ))}
           </select>
