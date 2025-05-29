@@ -11,11 +11,26 @@ const firebaseConfig = {
   storageBucket: "eh-project-36321.firebasestorage.app",
   messagingSenderId: "178577982698",
   appId: "1:178577982698:web:39a0523b61c1092f45c393",
-  measurementId: "G-L610VQVHZ6"
+  measurementId: "G-L610VQVHZ6",
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+const EVENT_TYPES = [
+  "heart",
+  "medkit",
+  "ambulance",
+  "happy",
+  "water",
+  "vaccine",
+  "vaccine-needle",
+  "eye",
+  "mental",
+  "nutrition",
+  "exercise",
+  "vaccine-shield",
+];
 
 const AddEventForm = () => {
   const [formData, setFormData] = useState({
@@ -79,13 +94,33 @@ const AddEventForm = () => {
         <h2 className="text-center text-3xl font-bold text-[#199A8E]">
           Add Event
         </h2>
+            {/* Select pentru type */}
+          <div>
+            <select
+              name="type"
+              value={formData.type}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 appearance-none bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#199A8E] text-gray-700"
+            >
+              <option value="" disabled hidden>
+                Select Event Type
+              </option>
+              {EVENT_TYPES.map((type) => (
+                <option key={type} value={type} className="text-gray-900">
+                  {type.charAt(0).toUpperCase() +
+                    type.slice(1).replace("-", " ")}
+                </option>
+              ))}
+            </select>
+          </div>
+          
         <form onSubmit={handleSubmit} className="space-y-4">
           {[
             { name: "name", label: "Event Name" },
             { name: "organizer", label: "Organizer" },
             { name: "location", label: "Location" },
             { name: "time", label: "Date & Time" },
-            { name: "type", label: "Event Type" },
             { name: "latitude", label: "Latitude", type: "number" },
             { name: "longitude", label: "Longitude", type: "number" },
           ].map(({ name, label, type = "text" }) => (
@@ -102,6 +137,8 @@ const AddEventForm = () => {
               />
             </div>
           ))}
+
+      
 
           <button
             type="submit"
